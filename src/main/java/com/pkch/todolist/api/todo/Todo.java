@@ -8,10 +8,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.time.LocalDateTime;
 
-
 @Entity
-@Data @Builder @EqualsAndHashCode(of = "id")
-@NoArgsConstructor @AllArgsConstructor
+@EqualsAndHashCode(of = "id") @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Todo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +22,21 @@ public class Todo {
     @Max(100) @Min(0)
     private Integer progress;
     private LocalDateTime deadline;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
     @ManyToOne
     private Account account;
+
+    @Builder
+    public Todo(String title, String comment, Priority priority,
+                @Max(100) @Min(0) Integer progress, LocalDateTime deadline, Account account) {
+        this.title = title;
+        this.comment = comment;
+        this.priority = priority;
+        this.progress = progress;
+        this.deadline = deadline;
+        this.createdAt = LocalDateTime.now();
+        this.account = account;
+    }
 }
+
+

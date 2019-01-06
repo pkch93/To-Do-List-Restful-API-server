@@ -6,15 +6,24 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity @Data @Builder
-@NoArgsConstructor @AllArgsConstructor @EqualsAndHashCode(of = "id")
+@Entity
+@Getter @Setter @EqualsAndHashCode(of = "id")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Review {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     @Lob
     private String content;
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
     @OneToOne
     private Todo todo;
+
+    @Builder
+    public Review(String title, String content, Todo todo) {
+        this.title = title;
+        this.content = content;
+        this.createdAt = LocalDateTime.now();
+        this.todo = todo;
+    }
 }

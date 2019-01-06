@@ -7,8 +7,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-@Entity @Data @Builder @AllArgsConstructor
-@NoArgsConstructor @EqualsAndHashCode(of = "id")
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter @Setter @EqualsAndHashCode(of = "id")
 public class Account {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,4 +22,14 @@ public class Account {
     private LocalDate createdDate;
     @OneToMany(mappedBy = "account")
     private ArrayList<Todo> todoList;
+
+    @Builder
+    public Account(String name, String email, String password, Integer age) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.age = age;
+        this.createdDate = LocalDate.now();
+        this.todoList = new ArrayList<>();
+    }
 }

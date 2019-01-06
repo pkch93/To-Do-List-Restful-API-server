@@ -14,12 +14,10 @@ public class TodoTest {
     @Before
     public void createAccount(){
         account = Account.builder()
-                    .id(1l)
                     .name("park")
                     .email("abcde@gmail.com")
                     .password("1234")
                     .age(27)
-                    .createdDate(LocalDate.now())
                     .build();
     }
 
