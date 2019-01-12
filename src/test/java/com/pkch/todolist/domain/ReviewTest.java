@@ -1,5 +1,6 @@
-package com.pkch.todolist.api.review;
+package com.pkch.todolist.domain;
 
+import com.pkch.todolist.api.review.Review;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

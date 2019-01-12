@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -21,7 +22,7 @@ public class Account {
     private Integer age;
     private LocalDate createdDate;
     @OneToMany(mappedBy = "account")
-    private ArrayList<Todo> todoList;
+    private List<Todo> todoList;
 
     @Builder
     public Account(String name, String email, String password, Integer age) {

@@ -1,4 +1,4 @@
-package com.pkch.todolist.api.auth;
+package com.pkch.todolist.auth;
 
 import org.springframework.web.bind.annotation.RestController;
 

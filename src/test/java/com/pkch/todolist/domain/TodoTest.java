@@ -1,11 +1,10 @@
-package com.pkch.todolist.api.todo;
+package com.pkch.todolist.domain;
 
 import com.pkch.todolist.api.account.Account;
+import com.pkch.todolist.api.todo.Priority;
+import com.pkch.todolist.api.todo.Todo;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.time.LocalDate;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,24 +30,7 @@ public class TodoTest {
         assertThat(todo).isNotNull();
     }
     // builder를 활용한 생성 Test
-
-    @Test
-    public void isJavaBean(){
-        // given
-        String study = "RestAPI 공부";
-        String comment = "빨리 하자...";
-
-        // when
-        Todo todo = new Todo();
-        todo.setTitle(study);
-        todo.setComment(comment);
-
-        // then
-        assertThat(todo.getTitle()).isEqualTo(study);
-        assertThat(todo.getComment()).isEqualTo(comment);
-    }
-    // javabean spec 준수 test
-
+    
     @Test
     public void createTodoByAccount(){
         // given (@before에서 account 할당)

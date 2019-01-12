@@ -39,7 +39,7 @@
 
 self-descritive를 만족하기 위한 api의 명세가 있는 문서의 url
 
-2. {baseurl}/api/auth/*
+2. {baseurl}/auth/*
 
 사용자 인증을 위한 url
 
