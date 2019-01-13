@@ -45,7 +45,27 @@ self-descritive를 만족하기 위한 api의 명세가 있는 문서의 url
 
 3. {baseurl}/api/todo
 
-할 일 정보를 가져올 수 있는 url
+할 일 정보를 가져올 수 있는 url, 로그인 된 유저만 접근가능하다.
+
+    - GET : {baseurl}/api/todo
+    
+        GET 방식으로 위 url에 접근하면 현재 로그인 된 유저의 할일 목록을 모두 볼 수 있다.
+    
+    - GET : {baseurl}/api/todo/{id}
+    
+        위 url은 해당 할 일에 상세 정보를 볼 수 있다.
+        
+    - POST : {baseurl}/api/todo
+    
+        POST 방식으로 위 url에 접근하면 할일을 등록할 수 있다.
+        
+    - PATCH : {baseurl}/api/todo/{id}
+    
+        해당 id의 할일 정보를 수정
+    
+    - DELETE : {baseurl}/api/todo/{id}
+    
+        해당 id의 할일 정보를 삭제
 
 4. {baseurl}/api/todo/{id}/review
 

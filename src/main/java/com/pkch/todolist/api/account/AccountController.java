@@ -29,4 +29,6 @@ public class AccountController {
                 linkTo(methodOn(AccountController.class).join(joinedAccount)).withSelfRel());
         return ResponseEntity.status(HttpStatus.CREATED).body(accountResource);
     }
+
+    // 고객 상세 정보 제공 / 고객 정보 수정 / 회원 탈퇴 기능 제공
 }

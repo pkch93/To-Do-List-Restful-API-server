@@ -5,6 +5,7 @@ public enum Priority {
 
     private int value;
 
+    public int getValue() { return this.value; }
     Priority(int value) {
         this.value = value;
     }

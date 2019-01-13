@@ -2,12 +2,9 @@ package com.pkch.todolist.api.todo;
 
 import com.pkch.todolist.api.account.Account;
 import lombok.*;
-import org.springframework.hateoas.ResourceSupport;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,12 +18,18 @@ public class Todo{
     private String comment;
     @Enumerated(EnumType.STRING)
     private Priority priority = Priority.NORMAL;
-    @Max(100) @Min(0)
-    private Integer progress = 0;
+    private int progress = 0;
     private LocalDateTime deadline;
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
     @ManyToOne
     private Account account;
+
+    public void update(TodoDto todoDto){
+        this.title = todoDto.getTitle();
+        this.comment = todoDto.getComment();
+        this.deadline = todoDto.getDeadline();
+        this.priority = todoDto.getPriority();
+    }
 
     @Builder
     public Todo(String title, String comment, @Nullable Priority priority, LocalDateTime deadline, Account account) {
@@ -34,7 +37,6 @@ public class Todo{
         this.comment = comment;
         this.priority = priority;
         this.deadline = deadline;
-        this.createdAt = LocalDateTime.now();
         this.account = account;
     }
 }

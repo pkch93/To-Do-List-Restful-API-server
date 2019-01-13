@@ -8,9 +8,8 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 public class AccountResource extends Resource<Account> {
 
-    public AccountResource(Account content, Link... links) {
-        super(content, links);
-        Link link = new Link("http://localhost:8080/", "index");
-        this.add(link);
+    public AccountResource(Account account, Link... links) {
+        super(account, links);
+        add(linkTo(AccountController.class).slash(account.getId()).withSelfRel());
     }
 }
